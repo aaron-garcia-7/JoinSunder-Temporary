@@ -1,0 +1,657 @@
+/* 
+Satoshi Weights 
+300 - 900 | Variable 
+
+Monument Weights 
+100, 200, 450, 675, 800 | Non-Variable 
+*/
+
+@font-face {
+  font-family: "satoshi";
+  src: url(../fonts/Satoshi-Variable.woff2);
+}
+@font-face {
+  font-family: "monument";
+  src: url(../fonts/PPMonumentExtended-Black.woff2);
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "monument";
+  src: url(../fonts/PPMonumentExtended-Bold.woff2);
+  font-weight: 675;
+  font-style: normal;
+}
+@font-face {
+  font-family: "monument";
+  src: url(../fonts/PPMonumentExtended-Regular.woff2);
+  font-weight: 450;
+  font-style: normal;
+}
+@font-face {
+  font-family: "monument";
+  src: url(../fonts/PPMonumentExtended-Light.woff2);
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "monument";
+  src: url(../fonts/PPMonumentExtended-Thin.woff2);
+  font-weight: 100;
+  font-style: normal;
+}
+  
+$satoshi: "satoshi", sans-serif;
+$monument: "monument", sans-serif;
+
+$sunderSnow: #f7f7f7;
+$sunderIce: #C6D3D8;
+$sunderRoyalLight: #0c5ff2;
+$sunderRoyal: #074895;
+$sunderNavy: #061A2A;
+$sunderMidnight: #000014;
+
+$XL-Text: calc(1.6rem + 2vw);
+$L-Text: calc(1.4rem + 0.8vw);
+$M-Text: calc(1.2rem + 0.8vw);
+$S-Text: calc(1.2rem + 0.4vw);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $satoshi, sans-serif;
+  &::selection {
+    background: $sunderRoyalLight;
+    color: $sunderSnow;
+  }
+}
+body {
+  background: $sunderMidnight;
+  color: $sunderSnow;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2 {
+  font-family: $monument, sans-serif;
+  font-weight: 450;
+}
+p {
+  font-family: $satoshi, sans-serif;
+  font-weight: 300;
+}
+
+/* Primary button hover animations */
+.swiperBtn {
+  position: relative;
+  background: none;
+  color: transparent;
+  overflow: hidden;
+  &::before {
+    content: "";
+    /* change per button*/
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transition: color 0.36s ease 0.2s;
+    pointer-events: none;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    animation: swiperBtn 0.5s cubic-bezier(.78,.13,.15,.86) forwards;
+    pointer-events: none;
+  }
+  &:hover::before {
+    transition: color 0.36s ease 0.2s;
+  }
+  &:hover::after {
+    animation: swiperBtnaft 0.5s cubic-bezier(.78,.13,.15,.86) forwards;
+  }
+}
+
+@keyframes swiperBtn {
+  0% {
+      left: auto;
+      right: 0;
+      width: 0%;
+  }
+  20% {
+      left: 0;
+      right: auto;
+      width: 0%;
+  }
+  100% {
+      left: 0;
+      right: auto;
+      width: 100%;
+  }
+}
+@keyframes swiperBtnaft {
+  0% {
+      left: 0;
+      right: auto;
+      width: 100%;
+  }
+  20% {
+      left: auto;
+      right: 0;
+      width: 100%;
+  }
+  100% {
+      left: auto;
+      right: 0;
+      width: 0%;
+  }
+}
+/* Primary button hover animations */
+
+
+.hero {
+  width: 100vw;
+  height: 100vh; // fallback if dynamic viewport height doesn't work
+  height: 100dvh;
+  min-height: 36rem;
+  background-image: url('../assets/heroBg.webp');
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.retainer {
+  position: relative;
+  margin: auto;
+  width: 100vw;
+  max-width: 112rem;
+  height: 100%;
+  max-height: 124rem;
+  padding: calc(1.2rem + 2vw) calc(1rem + 4vw);
+}
+.header {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: calc(6rem + 6vw);
+  max-width: 18rem;
+}
+.socialLink {
+  transition: 0.4s ease;
+  &:hover {
+    transform: scale(0.9);
+  }
+  .socialIcon {
+    width: calc(1rem + 2vw);
+    max-width: 4rem;
+  }
+}
+.heroText {
+  position: absolute;
+  top: 50%;
+  left: calc(1rem + 4vw);
+  transform: translate(0, -40%);
+}
+.title {
+  font-size: $XL-Text;
+  transform: scale(0.9);
+  opacity: 0;
+  animation: grow 0.8s ease forwards 0.12s;
+  margin-bottom: calc(0.4rem + 0.8vw);
+}
+.subTitle {
+  font-size: $M-Text;
+  transform: scale(0.9);
+  opacity: 0;
+  animation: grow 0.8s ease forwards 0.24s;
+  margin-bottom: calc(2.4rem + 2.4vw);
+}
+.ctaDiv {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+  animation: grow 0.8s ease forwards 0.36s;
+}
+
+@keyframes grow {
+  to {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+  }
+}
+
+.cta {
+  border: 2px solid $sunderNavy;
+  background: $sunderNavy;
+  border-radius: calc(0.2rem + 0.2vw);
+  padding: calc(0.4rem + 0.1vw) calc(1rem + 1vw);
+  font-family: $satoshi, sans-serif;
+  font-size: $S-Text;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0s linear 0.6s;
+  &::before {
+    content: "Get Started";
+    color: $sunderSnow;
+  }
+  &::after {
+    background: $sunderNavy;
+  }
+  &:hover {
+    background: transparent;
+    transition: background 0s linear 0s;
+  }
+  &:hover::before {
+    color: $sunderNavy;
+  }
+}
+.cta2 {
+  position: relative;
+  border: none;
+  background: none;
+  height: calc(2rem + 0.8vw);
+  font-family: $satoshi, sans-serif;
+  font-size: $S-Text;
+  font-weight: 450;
+  color: $sunderMidnight;
+  margin-left: calc(1rem + 1vw);
+  cursor: pointer;
+  .rightArrow {
+    position: absolute;
+    transform: translate(100%, 0);
+    transition: 0.3s ease;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(0.1rem, 0);
+    height: 2px;
+    background: $sunderMidnight;
+    animation: swiperBtn 0.4s cubic-bezier(.78,.13,.15,.86) forwards;
+  }
+  &:hover {
+    &::before {
+      animation: swiperBtnaft 0.4s cubic-bezier(.78,.13,.15,.86) forwards;
+    }
+    .rightArrow {
+      transform: translate(140%, 0);
+      transition: 0.3s ease 0.3s;
+    }
+  }
+}
+
+.contactContainer {
+  position: fixed;
+  top: 0;
+  background: #00001499;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease 0.2s;
+  &Active {
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.4s ease;
+  }
+}
+
+.contactPanel {
+  background: $sunderNavy;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(24rem + 24vw);
+  height: clamp(18rem, 100vh, 100vh); // Fallback if dynamic viewport height is unavailable.
+  height: clamp(18rem, 100dvh, 100vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(100%, 0);
+  transition: transform 0.4s ease;
+  &Active {
+    transform: translate(0, 0);
+    transition: transform 0.4s ease 0.2s;
+  }
+}
+
+.contactForm {
+  width: 70%;
+  height: clamp(28rem, 68%, 64rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  transform: translate(0, 6%);
+}
+.formTitle {
+  font-size: $M-Text;
+  color: $sunderSnow;
+}
+.fields {
+  height: clamp(24rem, 50%, 24rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+.formBlock {
+  position: relative;
+  width: calc(12rem + 18vw);
+  height: 25%;
+  border-bottom: 2px solid $sunderSnow;
+}
+.input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: $S-Text;
+  color: $sunderSnow;
+  background: transparent;
+  border: none;
+  width: 100%;
+  height: 50%;
+  border-radius: 0;
+  outline: none;
+  transition: border 0.1s ease;
+  display: flex;
+  justify-content: center;
+}
+.label {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  font-size: $S-Text;
+  color: $sunderSnow;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+.input:focus ~ .label,
+.input:not(:placeholder-shown).input:not(focus) ~ .label{
+  transform: translate(0, -112%);
+  opacity: 0.8;
+  font-size: calc(1rem + 0.2vw);
+}
+
+.submitWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.recaptcha {
+  // background: linen;
+  width: 20rem;
+  border-radius: 0.2rem;
+  height: 5rem;
+  transform: scale(0.9) translate(-1rem, calc(-0.2rem - 0.2vw));
+  margin: 0 0 calc(0.2rem + 0.2vw) 0;
+}
+.submitBtn {
+  width: 17rem;
+  height: 3.4rem;
+  font-size: $S-Text;
+  background: $sunderSnow;
+  border: 2px solid $sunderSnow;
+  border-radius: calc(0.2rem + 0.2vw);
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0s linear 0.6s;
+  &::before {
+    content: "Submit";
+    color: $sunderNavy;
+  }
+  &::after {
+    background: $sunderSnow;
+  }
+  &:hover {
+    background: transparent;
+    transition: background 0s linear 0s;
+  }
+  &:hover::before {
+    color: $sunderSnow;
+  }
+}
+.formLogo {
+  display: none;
+}
+.closeForm {
+  position: absolute;
+  top: calc(2rem + 2vw);
+  right: calc(1rem + 4vw);
+  border: none;
+  background: none;
+  width: calc(1.2rem + 1.2vw);
+  height: calc(1.2rem + 1.2vw);
+  cursor: pointer;
+  transition: 0.4s ease;
+  &:hover {
+    transform: scale(0.9);
+    .line {
+      background: $sunderIce;
+    }
+  }
+  .line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 4px;
+    background: $sunderSnow;
+    transition: 0.4s ease;
+  }
+  .line1 {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .line2 {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+@keyframes fade {
+  to {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.contactPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.contactPage .pageTitle {
+  font-size: $M-Text;
+  text-align: center;
+}
+.contactPage .pageLink {
+  font-size: $S-Text;
+  color: $sunderRoyalLight;
+}
+
+
+// video container
+
+.videoContainer {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #00001499;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  z-index: 4;
+  &Active {
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.6s ease;
+  }
+}
+.videoWrapper {
+  width: 60vw;
+  video {
+    width: 100%;
+  }
+} 
+.closeVideoBtn {
+  border-radius: 50%;
+  position: fixed;
+  bottom: 3.6rem;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+  transition: 0.4s ease;
+  &:hover {
+    transform: translate(-50%, 0%) scale(0.9);
+    .line {
+      background: $sunderIce;
+    }
+  }
+  .line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 4px;
+    background: $sunderSnow;
+    transition: 0.4s ease;
+  }
+  .line1 {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .line2 {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+// video container
+
+
+
+@media (min-width: 1820px) {
+  .title {
+    font-size: 4.6rem;
+  }
+  .subTitle {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 1024px) {
+  .videoWrapper {
+    width: calc(36rem + 8vw);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 24rem;
+  }
+  .cta2 {
+    color: $sunderSnow;
+    &::before {
+      background: $sunderSnow;
+    }
+  }
+}
+
+@media (max-width: 582px) {
+  .contactPanel {
+    width: 100vw;
+  }
+  .contactForm {
+    width: 86%;
+    height: 68%;
+  }
+  .fields {
+    height: clamp(8rem, 64%, 24rem);
+  }
+  .formBlock {
+      width: calc(14rem + 22vw);
+  }
+  .input:focus ~ .label,
+  .input:not(:placeholder-shown).input:not(focus) ~ .label{
+    transform: translate(0, -112%);
+  }
+  .line {
+    height: 2px;
+  }
+  .recaptcha {
+    transform: scale(0.8) translate(-2.5rem, calc(-0.2rem - 0.6vw))
+  }
+  .submitBtn {
+    width: 14rem;
+    height: 3rem;
+  }
+  .formLogo {
+    display: block;
+    position: absolute;
+    top: calc(2rem + 2vw);
+    left: calc(1rem + 4vw);
+    width: 7.2rem;
+    height: 1.6rem;
+  }
+}
+
+@media (max-height: 586px) {
+  .contactForm {
+    width: 80%;
+    height: clamp(20rem, 68%, 64rem);
+  }
+  .fields {
+    height: clamp(10rem, 20vh, 24rem);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .formBlock {
+    position: relative;
+    width: calc(8.6rem + 8.6vw);
+  }
+  .label {
+    top: 0;
+  }
+  .input {
+    height: 100%;
+  }
+  .submitWrapper {
+    flex-direction: row;
+    .recaptcha {
+      transform: scale(0.8) translate(-2.2rem, -1rem)
+    }
+    .submitBtn {
+      width: 12rem;
+    }
+  }
+}
+
+@media (hover:none) {
+  .rightArrow {
+    display: none;
+  }
+}
