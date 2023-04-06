@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join Sunder Energy. Our mission is to give people the power to change the future." />
+    <meta property="og:title" content="Join Sunder Energy" />
+    <meta property="og:type" content="job posting" />
+    <meta property="og:url" content="https://joinsunder.com/" />
+    <meta property="og:image" content="https://joinsunder.com/assets/metaImg.png" />
+    <meta property="og:video" content="https://joinsunder.com/assets/final.mov" />
+    <title>Join Sunder Energy - Join the best</title>
+    <link rel="icon" href="./public/favicon.ico" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="./public/faviconAlt.ico" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="./javascript/app.js" defer></script>
+</head>
+<body>
+    <main class="hero">
+        <div class="retainer">
+          <header class="header">
+            <a href="https://joinsunder.com/" class="logo">
+              <img
+                src="./public/logoLight.svg"
+                alt="Sunder Energy"
+                width="260"
+                height="64"
+                class="logo"
+              >
+            </a>
+            <a href="https://www.instagram.com/joinsunder/" target="_blank" class="socialLink">
+              <img
+                src="./public/instagram.svg"
+                alt="instagram"
+                width="32"
+                height="32"
+                class="socialIcon"
+              >
+            </a>
+          </header>
+          <div class="heroText">
+            <h1 class="title">Join the best</h1>
+            <p class="subTitle">
+              Our mission is to give people <br /> the power to change the future.
+            </p>
+            <div class="ctaDiv">
+                <button class="cta swiperBtn" aria-labelledby="Fill out a contact form to get started with Sunder Energy.">Get Started</button>
+                <button class="cta2" aria-labelledby="Watch a brief video reflecting company culture.">Watch Promo <span class="rightArrow">&rsaquo;</span></button>
+            </div>
+          </div>
+        </div>
+    </main>
+    <div class="contactContainer">
+        <aside class="contactPanel">
+            <a href="https://joinsunder.com/" class="formLogoLink">
+                <img src="public/logoLight.svg" alt="Sunder Energy" class="formLogo">
+            </a>
+            <button class="closeForm" aria-labelledby="Close the contact form">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+            </button>
+            <form class="contactForm" action="/contact" method="POST" name="joinSunder" netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" hidden>
+                <h2 class="formTitle">Join the team</h2>
+                <input type="hidden" name="joinSunder" value="contact" />
+                <div class="fields">
+                    <div class="formBlock">
+                        <input class="input"
+                            type="text"
+                            name="name"
+                            placeholder=" "
+                            aria-labelledby="Please enter your first and last name."
+                            id="name"
+                            required
+                        />
+                        <label for="name" class="label">
+                            Name
+                        </label>
+                    </div>
+                    <div class="formBlock">
+                        <input class="input"
+                            type="email"
+                            name="email"
+                            placeholder=" "
+                            aria-labelledby="Please enter your Email address."
+                            id="email"
+                            required
+                        />
+                        <label for="email" class="label">
+                            Email
+                        </label>
+                    </div>
+                    <div class="formBlock">
+                        <input class="input"
+                            type="tel"
+                            name="phone"
+                            placeholder=" "
+                            aria-labelledby="Please enter your preferred phone number."
+                            id="phone"
+                            required
+                        />
+                        <label for="phone" class="label">
+                            Phone
+                        </label>
+                    </div>
+                    <div class="formBlock">
+                        <input class="input"
+                            type="number"
+                            pattern="[0-9]{5}"
+                            name="zip"
+                            placeholder=" "
+                            aria-labelledby="Please enter your zip code."
+                            id="zip-code"
+                            required
+                        />
+                        <label for="zip-code" class="label">
+                            Zip Code
+                        </label>
+                    </div>
+                </div>
+                <div class="submitWrapper">
+                    <div data-netlify-recaptcha="true" class="recaptcha"></div>
+                    <button class="submitBtn swiperBtn" type="submit">Submit</button>
+                </div>
+            </form>
+        </aside>
+    </div>
+    <div class="videoContainer">
+        <div class="videoWrapper">
+            <video src="./assets/home.mp4" type="video/mov" controls preload="none" id="videoElement"></video>
+        </div>
+        <div class="closeVideoBtn">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+        </div>
+    </div>
+</body>
+</html>
